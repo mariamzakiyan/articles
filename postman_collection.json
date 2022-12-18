@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "101120a5-3a8f-436c-92aa-77294c0dda3d",
+		"name": "Articles",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23013156"
+	},
+	"item": [
+		{
+			"name": "Sign up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Test user",
+							"type": "text"
+						},
+						{
+							"key": "login",
+							"value": "test_login",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test_password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/signUp",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"signUp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign in",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "login",
+							"value": "test_login",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test_password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/signin",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add category",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6InRlc3RfbG9naW4iLCJpYXQiOjE2NzEzNjQ3OTksImV4cCI6MTY3MTM3MTk5OX0.-MMEqmENs07-QcKFtnrpWwLid_F2dSwJsBerSwM7zQU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "test category",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "test description",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/category",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get categories",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6InRlc3RfbG9naW4iLCJpYXQiOjE2NzEzNjQ3OTksImV4cCI6MTY3MTM3MTk5OX0.-MMEqmENs07-QcKFtnrpWwLid_F2dSwJsBerSwM7zQU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/category?limit=5&offset=0",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"category"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete category",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6InRlc3RfbG9naW4iLCJpYXQiOjE2NzEzNjQ3OTksImV4cCI6MTY3MTM3MTk5OX0.-MMEqmENs07-QcKFtnrpWwLid_F2dSwJsBerSwM7zQU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/category/5",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"category",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add article",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6InRlc3RfbG9naW4iLCJpYXQiOjE2NzEzNjQ3OTksImV4cCI6MTY3MTM3MTk5OX0.-MMEqmENs07-QcKFtnrpWwLid_F2dSwJsBerSwM7zQU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "test article",
+							"type": "text"
+						},
+						{
+							"key": "content",
+							"value": "test content",
+							"type": "text"
+						},
+						{
+							"key": "categoryId",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/article",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"article"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get articles",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6InRlc3RfbG9naW4iLCJpYXQiOjE2NzEzNjQ3OTksImV4cCI6MTY3MTM3MTk5OX0.-MMEqmENs07-QcKFtnrpWwLid_F2dSwJsBerSwM7zQU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/article?limit=5&offset=1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"article"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "offset",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
