@@ -67,7 +67,7 @@ export default class CategoryController {
       res.status(201).json({
         categories,
         limit,
-        offset
+        offset: offset + limit
       });
     }
     catch (e) {

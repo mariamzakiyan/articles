@@ -79,7 +79,7 @@ export default class ArticleController {
       res.status(201).json({
         articles,
         limit,
-        offset
+        offset: offset + limit
       });
     }
     catch (e) {
