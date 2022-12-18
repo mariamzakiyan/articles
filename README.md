@@ -18,3 +18,17 @@ To start the express server, run the following
 ```bash
 npm run start:dev
 ```
+
+
+For migration run the following
+
+```bash
+npm run migration
+```
+
+
+In order to add data, run the following
+
+```bash
+npm run seed
+```
