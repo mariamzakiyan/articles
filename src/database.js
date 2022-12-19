@@ -1,7 +1,8 @@
 import knex from 'knex';
 import config from '../knexfile.js';
+import appConfig from './config.js';
 
-const environment = process.env.NODE_ENV || 'development';
+const environment = appConfig.NODE_ENV || 'development';
 
 export default class Database {
   constructor() {

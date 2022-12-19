@@ -47,4 +47,13 @@ export default class ArticleModel {
       .offset(offset);
     return articles;
   }
+
+  /**
+   *
+   * @returns {Promise<*>}
+   */
+  async getTotalCount() {
+    const totalCount = await this.db.table('articles').count('id').first();
+    return totalCount.count;
+  }
 }

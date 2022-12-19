@@ -7,8 +7,9 @@ import AppError from '../utils/appError.js';
 import config from '../config.js';
 import errorMessages from '../constants/errorMessages.js';
 import roles from '../constants/roles.js';
+import models from "../models/index.js";
 
-export default class AuthController {
+class AuthController {
   /**
    *
    * @param models
@@ -61,7 +62,7 @@ export default class AuthController {
       );
 
       // return token
-      res.status(201).json({
+      res.status(StatusCodes.CREATED).json({
         token
       });
     }
@@ -120,3 +121,5 @@ export default class AuthController {
     }
   }
 }
+
+export default new AuthController(models);

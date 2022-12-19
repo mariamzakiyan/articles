@@ -1,8 +1,10 @@
 import UserModel from './user.js';
 import CategoryModel from './category.js';
 import ArticleModel from './article.js';
+import Database from "../database.js";
+const { db } = Database.getInstance();
 
-export default class Models {
+class Models {
   /**
    *
    * @param db
@@ -15,3 +17,5 @@ export default class Models {
     };
   }
 }
+
+export default new Models(db);

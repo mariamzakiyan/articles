@@ -3,8 +3,9 @@ import {
 } from 'http-status-codes';
 import AppError from '../utils/appError.js';
 import errorMessages from '../constants/errorMessages.js';
+import models from "../models/index.js";
 
-export default class ArticleController {
+class ArticleController {
   /**
    *
    * @param models
@@ -52,7 +53,7 @@ export default class ArticleController {
       });
 
       // return article id
-      res.status(201).json({
+      res.status(StatusCodes.CREATED).json({
         id: article.id
       });
     }
@@ -70,16 +71,22 @@ export default class ArticleController {
    */
   async list(req, res, next) {
     try {
-      const { offset = 0, limit = 10 } = req.query;
+      let { offset = 0, limit = 10 } = req.query;
+      limit = parseInt(limit);
+      offset = parseInt(offset);
 
       // get articles list
       const articles = await this.models.article.getArticles(offset, limit);
 
+      // get total count of articles
+      const totalCount = await this.models.article.getTotalCount();
+
       // return data with limit and offset
-      res.status(201).json({
+      res.status(StatusCodes.OK).json({
         articles,
         limit,
-        offset: offset + limit
+        offset: offset+ limit,
+        totalCount: parseInt(totalCount)
       });
     }
     catch (e) {
@@ -87,3 +94,5 @@ export default class ArticleController {
     }
   }
 }
+
+export default new ArticleController(models);

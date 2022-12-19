@@ -3,8 +3,9 @@ import {
 } from 'http-status-codes';
 import AppError from '../utils/appError.js';
 import errorMessages from '../constants/errorMessages.js';
+import models from "../models/index.js";
 
-export default class CategoryController {
+class CategoryController {
   /**
    *
    * @param models
@@ -40,7 +41,7 @@ export default class CategoryController {
       });
 
       // return category id
-      res.status(201).json({
+      res.status(StatusCodes.CREATED).json({
         id: category.id
       });
     }
@@ -58,16 +59,22 @@ export default class CategoryController {
    */
   async list(req, res, next) {
     try {
-      const { offset = 0, limit = 10 } = req.query;
+      let { offset = 0, limit = 10 } = req.query;
+      limit = parseInt(limit);
+      offset = parseInt(offset);
 
       // get categories list
       const categories = await this.models.category.getCategories(offset, limit);
 
+      // get total count of categories
+      const totalCount = await this.models.category.getTotalCount();
+
       // return data with limit and offset
-      res.status(201).json({
+      res.status(StatusCodes.OK).json({
         categories,
         limit,
-        offset: offset + limit
+        offset: offset + limit,
+        totalCount: parseInt(totalCount)
       });
     }
     catch (e) {
@@ -95,7 +102,7 @@ export default class CategoryController {
       const deleted = await this.models.category.deleteCategory(id);
 
       // return success response
-      res.status(201).json({
+      res.status(StatusCodes.OK).json({
         success: deleted
       });
     }
@@ -104,3 +111,5 @@ export default class CategoryController {
     }
   }
 }
+
+export default new CategoryController(models);

@@ -58,4 +58,13 @@ export default class CategoryModel {
       .first();
     return category;
   }
+
+  /**
+   *
+   * @returns {Promise<*>}
+   */
+  async getTotalCount() {
+    const totalCount = await this.db.table('categories').count('id').first();
+    return totalCount.count;
+  }
 }
