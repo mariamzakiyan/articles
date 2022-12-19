@@ -15,7 +15,7 @@ const articleController = new ArticleController(models);
 router.post(
   '/article',
   verifyToken,
-  permit([roles.MODERATOR, roles.MEMBER]),
+  permit([roles.MODERATOR]),
   (req, res, next) => articleController.create(req, res, next)
 );
 
