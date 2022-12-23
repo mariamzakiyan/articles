@@ -42,7 +42,7 @@ class ArticleController {
       }
 
       // get user id from request
-      const { user: { id: userId } } = req;
+      const { user: { id: userId } } = res.locals;
 
       // create article
       const article = await this.models.article.createArticle({

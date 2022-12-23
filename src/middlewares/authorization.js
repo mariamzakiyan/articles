@@ -38,7 +38,7 @@ const authorize = (roles) =>
       }
 
       // add user to request
-      req.user = user;
+      res.locals = user;
       next();
     }
     catch (err) {
